@@ -59,7 +59,7 @@ public class PorudzbinaController {
 	
 	@GetMapping("/dobavljac/{id}")
 	public ResponseEntity<?> getPorudzbinaByDobavljac(@PathVariable long id){
-		Optional<Dobavljac> dobavljac = dobavljacService.getById(id);
+		Optional<Dobavljac> dobavljac = dobavljacService.findById(id);
 		if(dobavljac.isPresent()) {
 			List<Porudzbina> lista = service.getByDobavljac(dobavljac.get()).get();
 			if(!lista.isEmpty()) {
