@@ -1,1 +1,1 @@
-export const ARTIKL_URL = 'http://localhost:8081/artikl'
+export const ARTIKL_URL = 'http://localhost:8080/artikl'
