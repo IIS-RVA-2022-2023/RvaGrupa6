@@ -1,5 +1,5 @@
 export class Artikl{
     id!:number;
-    naziv!: string;
+    naziv!:string;
     proizvodjac!:string;
 }
