@@ -1,0 +1,20 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    min-width: 450px;
+    min-height: 500px;
+}
+
+.form{
+    min-width: 450px;
+    margin-left: 100px;
+}
+
+.form-field,h3{
+    margin-left: 100px;
+}
+
+.mat-form-field{
+    font-size: 16px;
+    flex-grow: 1;
+}
