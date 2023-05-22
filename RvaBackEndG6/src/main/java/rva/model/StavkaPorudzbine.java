@@ -26,11 +26,11 @@ public class StavkaPorudzbine implements Serializable {
 	private double kolicina;
 	private String jedinicaMere;
 	private double cena;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "artikl")
 	private Artikl artikl;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "porudzbina")
 	private Porudzbina porudzbina;
@@ -79,5 +79,20 @@ public class StavkaPorudzbine implements Serializable {
 		this.cena = cena;
 	}
 
-}
+	public Artikl getArtikl() {
+		return artikl;
+	}
 
+	public void setArtikl(Artikl artikl) {
+		this.artikl = artikl;
+	}
+
+	public Porudzbina getPorudzbina() {
+		return porudzbina;
+	}
+
+	public void setPorudzbina(Porudzbina porudzbina) {
+		this.porudzbina = porudzbina;
+	}
+
+}

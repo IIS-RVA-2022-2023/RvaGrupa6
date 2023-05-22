@@ -12,12 +12,12 @@
         <!--Datum Kreiranja-->
       <ng-container matColumnDef="datum">
         <mat-header-cell *matHeaderCellDef>Datum kreiranja</mat-header-cell>
-        <mat-cell *matCellDef="let row">{{ row.datum }}</mat-cell>
+        <mat-cell *matCellDef="let row">{{ row.datum | date:'dd.MM.yyyy.' }}</mat-cell>
       </ng-container>
       <!--Datum Kreiranja-->
       <ng-container matColumnDef="isporuceno">
         <mat-header-cell *matHeaderCellDef>Datum Isporuke</mat-header-cell>
-        <mat-cell *matCellDef="let row">{{ row.isporuceno }}</mat-cell>
+        <mat-cell *matCellDef="let row">{{ row.isporuceno | date:'dd.MM.yyyy.' }}</mat-cell>
       </ng-container>
       <!-- Iznos -->
       <ng-container matColumnDef="iznos">
@@ -32,7 +32,7 @@
       <!-- Dobavljac -->
       <ng-container matColumnDef="dobavljac">
         <mat-header-cell *matHeaderCellDef>Dobavljac</mat-header-cell>
-        <mat-cell *matCellDef="let row">{{ row.dobavljac }}</mat-cell>
+        <mat-cell *matCellDef="let row">{{ row.dobavljac.naziv }}</mat-cell>
       </ng-container>
       <!-- Action Buttons -->
       <ng-container matColumnDef="actions">
