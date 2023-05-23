@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { STAVKA_PORUDZBINE_URL } from '../constants';
+import { STAVKA_PORUDZBINE_URL, STAVKE_ZA_PORUDZBINU_URL } from '../constants';
 import { StavkaPorudzbine } from '../models/stavka-porudzbine';
 
 @Injectable({
@@ -10,6 +10,10 @@ import { StavkaPorudzbine } from '../models/stavka-porudzbine';
 export class StavkaPorudzbineService {
 
   constructor(private httpClient:HttpClient) { }
+
+  public getStavkeByPorudzbina(idPorudzbine:number):Observable<any>{
+    return this.httpClient.get(`${STAVKE_ZA_PORUDZBINU_URL}/${idPorudzbine}`);
+  }
 
   public getAllStavkaPorudzbines():Observable<any>{
     return this.httpClient.get(`${STAVKA_PORUDZBINE_URL}`);

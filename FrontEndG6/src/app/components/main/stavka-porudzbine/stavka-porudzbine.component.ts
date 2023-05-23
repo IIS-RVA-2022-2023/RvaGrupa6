@@ -1,5 +1,6 @@
+import { Porudzbina } from './../../../models/porudzbina';
 import { Artikl } from './../../../models/artikl';
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
@@ -12,15 +13,22 @@ import { StavkaPorudzbineDialogComponent } from '../../dialogs/stavka-porudzbine
   templateUrl: './stavka-porudzbine.component.html',
   styleUrls: ['./stavka-porudzbine.component.css']
 })
-export class StavkaPorudzbineComponent {
+export class StavkaPorudzbineComponent implements OnChanges {
 
   dataSource!: MatTableDataSource<StavkaPorudzbine>;
   displayedColumns = ['id','redniBroj','kolicina','jedinicaMere','cena','artikl','actions'];
   subscription!:Subscription;
 
+  @Input() childSelectedPorudzbina!:Porudzbina;
+
   constructor(private stavkaPorudzbineService: StavkaPorudzbineService,
               public dialog: MatDialog){
 
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if(this.childSelectedPorudzbina.id){
+      this.loadData();
+    }
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
@@ -31,7 +39,7 @@ export class StavkaPorudzbineComponent {
   }
 
   public loadData(){
-    this.subscription = this.stavkaPorudzbineService.getAllStavkaPorudzbines().subscribe(
+    this.subscription = this.stavkaPorudzbineService.getStavkeByPorudzbina(this.childSelectedPorudzbina.id).subscribe(
       data => {this.dataSource = new MatTableDataSource(data);
               console.log(data)}),
       (error:Error) => {console.log(error.name + ' ' + error.message);}
